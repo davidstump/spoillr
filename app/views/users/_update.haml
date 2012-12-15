@@ -1,0 +1,10 @@
+.modal{:id => "update-friend-#{user.id}", :style => "display: none;"}
+  = simple_form_for user, :url => edit_friendship_path(user), :html => {:method => :get, :class => 'form-horizontal' } do |f|
+    .modal-header
+      %a.close{"data-dismiss" => "modal"} ×
+      %h3 Update Friend
+    .modal-body
+      = f.input :username, label: 'Username'
+    .modal-footer
+      = f.submit "Update", :class => "btn"
+      %a.btn{"data-dismiss" => "modal", :href => "#"} Close

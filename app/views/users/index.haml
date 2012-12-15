@@ -1,0 +1,18 @@
+%h3 Friends
+.span8
+  %table.table.table-condensed
+    %thead
+      %tr
+        %th Username
+        %th
+    %tbody
+      - @friends.each do |user|
+        %tr
+          %td= link_to user.username, user
+          %td
+            %a.btn.btn-mini{"data-toggle" => "modal", :href => "#update-friend-#{user.id}", :type => "button"} Update
+            = render :partial => 'update', :locals => { :user => user }
+          %td= link_to("Remove", friendship_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user
+  .add
+    %a.btn.btn-mini{"data-toggle" => "modal", :href => "#add-friend", :type => "button"} Add Friend
+    = render 'user'

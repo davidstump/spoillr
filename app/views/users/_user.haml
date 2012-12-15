@@ -1,0 +1,10 @@
+.modal{:id => "add-friend", :style => "display: none;"}
+  = simple_form_for @friendship, :url => new_friendship_path, :html => {:method => :get, :class => 'form-horizontal' } do |f|
+    .modal-header
+      %a.close{"data-dismiss" => "modal"} ×
+      %h3 Add Friend
+    .modal-body
+      = f.input :username, label: 'Username', :autofocus => true
+    .modal-footer
+      = f.submit "Add", :class => "btn"
+      %a.btn{"data-dismiss" => "modal", :href => "#"} Close

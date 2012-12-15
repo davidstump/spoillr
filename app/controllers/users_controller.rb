@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @users = User.all
+    @friends = current_user.friends
+    @friendship = Friendship.new
   end
 
   def show
