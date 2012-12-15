@@ -17,6 +17,6 @@ class HomeController < ApplicationController
   end
 
   def search(friend)
-    Twitter.search("from:#{friend.username} want OR need OR love OR awesome").results
+    Twitter.search("from:#{friend.username} want OR need OR love OR amzn OR #want", :count => 5).results
   end
 end
